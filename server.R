@@ -88,6 +88,11 @@ server <- function(input, output) {
     
   })
   
+  autoInvalidate <- reactiveTimer(10000)
+  observe({
+    autoInvalidate()
+    cat(".")
+  })
   
   output$sim_plot<-renderPlot({
     withProgress(message = 'Simulating, will take a few minutes.', value = 0, {
