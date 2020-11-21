@@ -1,4 +1,5 @@
 library(shiny)
+library(shinythemes)
 library(shinydashboard)
 
 sidebar <- dashboardSidebar(
