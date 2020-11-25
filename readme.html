@@ -1,32 +1,54 @@
 <html>
 <body>
 
-<h4><b> Purpose </b></h4>
-<p>This simulation tool is designed to give a rough estimate of risk for hosting summer camp or other similar sleep-away events. Understanding the simulation assumptions is key to interpreting the results. Please read this first to understand how to change your simulation assumptions.</p>
+<h4><b> Purpose and Limitations</b></h4>
+<p>DO NOT use this simulation tool to justify hosting summer camp in 2021 (7). This simulation tool was primarily built to give a rough idea of COVID spread risk at camp given daily COVID testing. The tool can be used to analyze how COVID spread risk changes with community positivity rate, vaccination rate, cabin size, and camp size. These analyses should only be used to understand how to mitigate COVID risk and guide the design of county positivity rate and vaccination rate go/no-go thresholds. 
+
+<p>These simulations assume that COVID positive individuals are ALWAYS detectable. This is a major limitation of this analysis, as COVID has proven to be a tough public health problem as individuals could have a low viral burden and thus test COVID negative but still be infectious (1). Asymptomatic and undetectable transmission should not be taken lightly.</p>
+
+<p>Understanding the simulation assumptions is key to interpreting the results. Please read this first to understand how to change your simulation assumptions.</p>
+
+<h4> <b>Analysis Options </b></h4>
+<p><h5><b>Single Scenario </b> </h5>
+This is the simplest option, looking at only one set of assumptions.</p>
+
+<p><h5><b>Community Positivity Rate Analysis</b> </h5>
+This looks at how COVID spread will change based on county positive test rate. This analysis keeps camp size, cabin size, and vaccination rate constant. Local governments are reporting what percentage of test are positive in each county (typically reported as a 7 or 14-day moving average), you should be able to find this information in local newspapers and local health department websites. If your camp draws campers from multiple counties, I recommend using the most conservative value and assume that all counties have the positive test rate of the worst COVID afflicted county. If testing is very limited in your county, the reported rate will not be very reliable (2).</p>
+
+<p><h5><b>Vaccination Rate Analysis</b> </h5>
+This analysis looks at how COVID spread will change as vaccination rate of your camp population changes. This analysis keeps camp size, cabin size, and county positive test rate constant. It is unclear what percentage of the population will be vaccinated by next summer. The conservative assumption would be 0%, as first in line for the vaccine are healthcare professionals, elderly, and essential workers.</p>
+
+<p><h5><b>Camp Size Analysis</b> </h5>
+A larger camp means you are more likely it is to import an undetected infection to camp. Additionally more interactions between individuals and gives a higher chance of spreading COVID within camp. This analysis keeps cabin size, county positive test rate, and vaccination rate constant. Use this analysis to consider what size of camp you should host next summer.</p>
+
+<p><h5><b>Cabin/Group Size Analysis</b> </h5>
+Larger cabin/group size means more people are interacting closely and sleeping in a small enclosed space without masks together, increasing the risk of spreading COVID within cabin groups. This analysis keeps camp size, county positive test rate, and vaccination rate constant. Use this analysis to consider what how many people should be assigned to each small group/cabin.</p>
+
+
+<p><h5><b>Imported Infections Analysis</b> </h5>
+This analysis is designed to optimize your infection control at camp. The simulations assume that X number of undetected cases are imported to camp, and takes a closer look at what COVID spread looks like. This analysis keeps camp size, cabin size, and vaccination rate constant. You can use this tool to determine if your camp size, cabin size, and vaccination rate are sufficient to control the spread of COVID at camp. This analysis explores on average how many additional infections will occur at camp, how many people will you quarantine, how many people will be false positives and be mistakenly quarantined, etc.</p>
 
 <h4> <b>Simulation Inputs and Assumptions </b></h4>
-<p>These simulations do not take into account the possibility that individuals could have a low viral burden and thus be difficult to detect but still be infectious. This is a major limitation of this analysis and undetectable transmission should not be taken lightly.</p>
-<p>These simulations assume a certain number of individuals are infected, and does not consider the possibility that 0 individuals are initially infected. For example, if the community positivity rate is 3%, in a 100 person camp there is a 4.7% chance no one is infected. Equation: % chance no one is infected = 100*(1 - community positivity rate)^camp_size</p>
-<p>The vaccine is assumed to have 95% efficacy as reported recently by Pfizer and Moderna.</p>
+<p>The vaccine is assumed to have 95% efficacy as reported recently by Pfizer and Moderna (2, 3).</p>
 <p>400 simulations are performed for each initial infected individuals scenario. Simulating 10 scenarios takes approximately 6-10 minutes, depending on the camp and cabin size. If you choose a large range of initial infections with a small step, the simulation will take a long time.  </p>
 
-<h5><b>Camp Schedule & Logistics </b> </h5>
-<p>Testing is performed during check-in prior to arriving to camp. Positive individuals will not be allowed to attend and will be sent home with parents or not allowed to board the camp bus. Testing is performed every morning on all individuals prior to any activities. Individuals that test positive will be placed in quarantine and will no longer infect anyone else.</p>
+<p><h5><b>Camp Schedule & Logistics </b> </h5>
+Testing is performed during check-in prior to arriving to camp. Positive individuals will not be allowed to attend and will be sent home with parents or not allowed to board the camp bus. Testing is performed every morning on all individuals prior to any activities. Individuals that test positive will be placed in quarantine and will no longer infect anyone else. The difficult real world logistics of quarantine cannot be understated, if your organization does not have the expertise, personnel, and resources to manage quarantine then I highly discourage hosting your summer camp.</p>
 
-<h5><b>COVID Test </b> </h5>
-<p>The default COVID test used in these simulations is based off the first FDA approved fully take-at-home test developed by Lucira Health. Each testing unit is independent and tests will take approximately 30 minutes and can be run completely in parallel. The reported sensitivity and specificity is 94% and 98% respectively. Each unit is expected to cost $50. As additional at home tests are approved, you can adjust the sensitivity and specificity in the simulation. </p>
+<p><h5><b>COVID Test </b> </h5>
+The default COVID test used in these simulations is based off the first FDA approved fully take-at-home test developed by Lucira Health (4). Each testing unit is independent, battery powered, and will take approximately 30 minutes. The reported sensitivity and specificity is 94% and 98% respectively (5). Each unit is expected to cost $50. As additional at home tests are approved, you can adjust the sensitivity and specificity in the simulation. </p>
 
+<p><h5><b>Infection Risk </b> </h5>
+The simulation assumptions made for infection risk are a major source of uncertainty. There is very little high quality human data about infection risk in small groups and any conclusions are hard to extrapolate to the many varied types of indoor and outdoor interactions that occur at summer camp. Therefore for simplicity, infection rate for all of camp and within small groups is estimated as a cumulative infection risk per active infection. You can adjust these rates based on how much interaction between small groups there will be at camp; if camp-wide activities are all canceled, activities are all outdoors, and meals are staggered then infection rate for all of camp can be adjusted downwards. However, the more closely each small group interacts within itself the higher the infection rate within small groups. The default infection rate for all of camp is 5% for each active infection and 50% within small groups for each active infection. For example, if there are 2 active undetected infections within a small group, then each individual at camp has a 10% chance of being infected and individuals within that small group has a 100% chance of being infected.</p>
 
-<a href="https://www.nytimes.com/live/2020/11/18/world/covid-19-coronavirus/the-fda-authorizes-the-first-at-home-coronavirus-test">New York Times Article about first at home COVID test</a>
-<p><a href="https://www.lucirahealth.com/">Lucira Health</a></p>
-
-
-<h5><b>Infection Risk during Day & Night Activities </b> </h5>
-<p>Infection rate during day or night activities is estimated as a cumulative infection risk per active infection. Day activities assume that all campers and staff are mixing and thus all have an equal chance for infection. Night activities assume that campers and staff are living in separate cabins (you can designate cabin size). For example, if there are 2 active undetected infections then each each person has a 10% chance of being infected during the day (default day infection rate per active infection = 5%). You can adjust this risk up or down based on whether you will require masks, have staggered meals, or other infection preventative measures. Night infection risk is limited to ONlY those living in the same cabin. The default infection rate per active infection is 50% assuming a small cabin and sleeping without masks.
-
-
-
-</p>
+<p><h4><b>Citations</b></h4>
+1: Furukawa NW, Brooks JT, Sobel J. Evidence supporting transmission of severe acute respiratory syndrome coronavirus 2 while presymptomatic or asymptomatic. Emerg Infect Dis. 2020 Jul. <a href="https://doi.org/10.3201/eid2607.201595">link</a> </p>
+<p>2: FRitchie H, Ospina EO, Beltekian D. Coronavirus (COVID-19) Testing. Our World in Data. 2020 Nov. <a href="https://ourworldindata.org/coronavirus-testing">link</a> </p>
+<p>3: Pfizer and BioNTech Conclude Phase 3 Study of COVID-19 Vaccine Candidate, Meeting All Primary Efficacy Endpoints. Pfizer Press Release. 2020 Nov. <a href="https://www.pfizer.com/news/press-release/press-release-detail/pfizer-and-biontech-conclude-phase-3-study-covid-19-vaccine">link</a></p>
+<p>4: Moderna’s COVID-19 Vaccine Candidate Meets its Primary Efficacy Endpoint in the First Interim Analysis of the Phase 3 COVE Study. Moderna Press Release. 2020 Nov. <a href="https://investors.modernatx.com/news-releases/news-release-details/modernas-covid-19-vaccine-candidate-meets-its-primary-efficacy">link</a></p>
+<p>5: Wu K. The F.D.A. authorizes the first at-home coronavirus test. New York Times. 2020 Nov. <a href="https://www.nytimes.com/live/2020/11/18/world/covid-19-coronavirus/the-fda-authorizes-the-first-at-home-coronavirus-test">link</a></p>
+<p>6: Lucira Health COVID-19 All-In-One Test Kit Package Insert. 2020 Nov. <a href="https://www.lucirahealth.com/">link</a></p>
+<p>7: Hwang Kellie. Here’s a look at COVID-19 risk tools — and why experts say they shouldn’t guide your decisions. San Francisco Chronicle. 2020 Nov. <a href="https://www.sfchronicle.com/bayarea/article/Here-s-a-look-at-COVID-19-risk-tools-and-15749451.php">link</a></p>
 
 </body>
 </html>

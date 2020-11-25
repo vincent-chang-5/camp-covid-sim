@@ -1,0 +1,32 @@
+<html>
+<body>
+
+<p><h4><b> Limitations </b></h4>
+I want to reiterate that this tool CANNOT be used to justify hosting camp in 2021. Modeling and simulation utilizes assumptions about previous data to provides a rough idea of relationships between COVID risk and various parameters (test characteristics, camp size, cabin size, county positive test rate, vaccination rate, etc.). Assumptions have been made within the summer camp context and to simplify analysis. For example, COVID infected individuals are always assumed to be detectable and infectious, while in reality detectability and infectability changes across the viral life cycle. Additionally, quarantine is assumed to be perfect and quarantined individuals cannot infect others. The reality is that the logistics of quarantine are difficult and quarantined individuals are a non-zero infection risk. These assumptions may or may not hold true in the future, simulations are not a replacement for real data.</p>
+
+<p>The reported probabilities in these analyses are NOT the real probabilities of occuring, they are actually the % of simulations. The actual probability of the perfect rate (catching all infections at check in) is likely smaller as individuals may be early in the viral lifecycle and have a low viral load that is difficult to detect but still infectious. </p>
+
+<h4><b> Simulation Output & Interpretation</b></h4>
+<p><b><h5>Summary Simulation Plot/Table </h5></b>
+This plot provides a few key takeaways: 
+<ul>
+	<li>First, this plot provides a good visualization of how COVID risk changes across the varied parameter. For a minimal COVID risk camp, you are looking to maximize the perfect rate and minimize the import and quarter rates across all camp design parameters. </li>
+	<li>Second, you can use this plot to guide the design of go/no-go thresholds for summer camp. For example, you may want to see county positive test rate fall below a particular threshold before you feel comfortable hosting summer camp, or you may want a particular percentage of camp vaccinated. </li>
+	<li>Third, you can see that the quarter rate is relatively parallel with the import rate. This is because with testing, most scenarios will only import one or two cases. However, once a case is imported the outcome is largely dependent on infection control measures at camp. </li>
+</ul>
+
+<p><b><h5>Data Dictionary of Raw Simulated Data</h5></b>
+The data is summarized per simulation per day at camp.
+<ul>
+	<li>sim_n = simulation number</li>
+	<li>[2nd Column] = This will be your analysis parameter (Single Scenario, County Postive Test Rate, Vaccination Rate, Camp Size, Cabin/Group Size, Initial Infected Individuals)</li>
+	<li>day = day of camp, starting at day 0 check in to the camp duration you've set under camp assumptions. </li>
+	<li>Infections = Total number of COVID positive individuals at camp on that day, includes those that are quarantined and undetected.</li>
+	<li>Active_Infections = Number of undetected non-quarantined COVID positive individuals at camp on that day.</li>
+	<li>Quarantine = Number of individuals in quarantine, includes those who tested false positive and were mistakenly quarantined.</li>
+	<li>initial_infections = Number of initial infections in the camp population prior to testing at check in.</li>
+</ul></p>
+
+
+</body>
+</html>

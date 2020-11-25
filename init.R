@@ -1,4 +1,4 @@
-my_packages = c("shiny","shinythemes","shinydashboard","ggplot2","dplyr","tidyr","scales","gridExtra","future.apply")
+my_packages = c("shiny","shinythemes","shinydashboard","ggplot2","dplyr","tidyr","scales","gridExtra","future.apply","RColorBrewer")
 
 install_if_missing = function(p) {
   if (p %in% rownames(installed.packages()) == FALSE) {
