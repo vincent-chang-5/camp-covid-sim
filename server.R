@@ -67,7 +67,7 @@ server <- function(input, output) {
       } else {
         initials = rbinom(input$camp_size, 1, prob = (input$positive_rate/100))
       } 
-      sims <- future_lapply(1:50, future.seed = T, function(sim_n){
+      sims <- future_lapply(1:400, future.seed = T, function(sim_n){
         if (input$Analysis == 0){
           camp_data_holder = data.frame(sim_n = rep(sim_n, each = input$camp_size),
                                         initial = initial,
